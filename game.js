@@ -21,14 +21,14 @@ var updateGuessesLeft = function() {
   document.querySelector("#guesses-left").innerHTML = guessesLeft;
 };
 
-var updateLetterToGuess = function() {
+var updateLetterToGuess = function() { //this function looks at the letterToGuess variable, combines with all the letters available and chooses a random letter.
   
   //*** Here we get a random letterToGuess and assign it based on a random generator - use math to set letterToGuess equal to a random letter from our letters array (hints - math.floor, math.random will be used and letters array will be referenced)
   letterToGuess = letters[Math.floor(Math.random() * letters.length)];
   //========================================== letterToGuess = 
 };
 
-var updateGuessesSoFar = function() {
+var updateGuessesSoFar = function() { //this function stores the player guess and writes to the guesses so far id.
   // Here we take the guesses the user has tried -- then display it as letters separated by commas.
   document.querySelector("#guesses-so-far").innerHTML = guessedLetters.join(", ");
 };
@@ -45,52 +45,60 @@ var reset = function() {
   //==========================================
 
   //***call function to reset letter to guess
-  document.getElementById("letters");
-
+  //document.getElementById("letters");
+  updateLetterToGuess(); //this is asssociated with the updateLetterToGuess function. The () is the "call" and makes the function work.
   //==========================================
 
   //***call function to update guesses left in html
-  document.getElementById("Guesses-left").textContent = "Guesses Left: ";
+  //document.getElementById("Guesses-left").textContent = "Guesses Left: ";
+  updateGuessesLeft(); //this is associated  with the  guessesLeft function
+
   //==========================================
 
   //***call function to update guesses made so far in html
-  document.getElementById("guesses-so-far").textContent = "Your Guesses so far: ";
+  //document.getElementById("guesses-so-far").textContent = "Your Guesses so far: ";
+  updateGuessesSoFar();
   //==========================================
 };
 
 // Execute on page load.
 //***call function to update letter to guess
-document.onload = function(){
+//document.onload = function(){
+  updateLetterToGuess();
 
-  var updateLettersToGuess = function() {
-  letterToGuess = letters[Math.floor(Math.random() * letters.length)];
-};
+  //var updateLettersToGuess = function() {
+  //letterToGuess = letters[Math.floor(Math.random() * letters.length)];
+//};
 //==========================================
 
 //***call function to update guesses left
-var updateGuessesLeft = function () {
-  document.getElementById("Guesses-left").textContent = "Guesses Left: ";
-}
+updateGuessesLeft();
+
+//var updateGuessesLeft = function () {
+ // document.getElementById("Guesses-left").textContent = "Guesses Left: ";
+//}
 //==========================================
-}
+//}
 
 // This function will capture the keyboard clicks.
 document.onkeydown = function(event) {
 
   //***subtract one from guesses left when a key is clicked
-  for (var i=0; i=guessesLeft.length; i--) {
-    document.getElementById("Guesses-left").textContent = "Guesses Left: ";
-  }
+  guessesLeft--;
+  //for (var i=0; i=guessesLeft.length; i--) {
+  //  document.getElementById("Guesses-left").textContent = "Guesses Left: ";
+  //}
   //==========================================
 
   // Lowercase the letter
   var letter = event.key.toLowerCase();
 
   // ***Add the guess to the guessedLetters array using .push
-  for (var i=0; i<letters.length; i++) {
-    var letterGuess = ["guessedLetters"];
-      document.getElementById("letters").push = "guesses-so-far: ";
-  }
+  guessedLetters.push(letter);
+  //for (var i=0; i<letters.length; i++) {
+  //  var letterGuess = ["guessedLetters"];
+   //   document.getElementById("letters").push = "guesses-so-far: ";
+  //}
   //==========================================
 
   // Then its going to run the update functions
